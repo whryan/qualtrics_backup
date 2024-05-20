@@ -1,5 +1,5 @@
 # Qualtrics Backup Script
-A very simple script for backing up all your data and .qsf files from Qualtrics.
+A very simple script for backing up all your data and .qsf files from Qualtrics. It will download all of the .qsf files and data for every survey in your account. It should be reasonably easy to use if you can use R. It works for me, but I definitely have not tested it with any other setup than my own. Please be careful whenever you are using an API- this script has no way to do anything but download your own data, but in theory you could mess things up. 
 
 
 ## 1. Get your Datacenter ID and API key for Qualtrics
