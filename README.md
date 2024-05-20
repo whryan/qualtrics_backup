@@ -12,7 +12,10 @@ Get your datacenter ID (it will be something like ca1, yul1, etc) and your API k
 ![image](https://github.com/whryan/qualtrics_backup/assets/8107009/6475fa1d-bfcc-4388-aa34-1e7be8fabf6d)
 
 ## 2. Set up the script
-Download the script in this repo, and put it into a new folder. Use RStudio to make that folder a new R project. 
+Download the script in this repo, and put it into a new folder. Use RStudio to make that folder a new R project. At this point, this folder should look something like this example folder:
+
+![image](https://github.com/whryan/qualtrics_backup/assets/8107009/366a5716-bf0f-44b0-803a-7f27ebcdef93)
+
 
 Then, go into the script and enter in your individual API key and datacenter URL on these two lines:
 
