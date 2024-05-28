@@ -48,11 +48,14 @@ process_survey = function(survey_id){
   
   
   qdata_filename = paste0(here("question_data//"), "question_data-", survey_id, '.Rds')
-  
+
+  s1_rdata = survey1
+  responsedata_filename = paste0(here("data//"), "response_data-", survey_id, '.Rds')
   
   list.save(s1_mdata, metadata_filename)
   
   saveRDS(s1_qdata, qdata_filename)
+  saveRDS(s1_rdata, responsedata_filename)
   
 }
 
