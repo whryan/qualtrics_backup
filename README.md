@@ -3,6 +3,8 @@ A very simple script for backing up all your data and .qsf files from Qualtrics.
 
 This code uses the package `qualtRics` for downloading the data, and then uses `httr` for downloading the .qsf files, since that functionality wasn't in `qualtRics`. I wrote it pretty quickly, and it could definitely be improved on a lot of fronts (e.g. right now there is no code which accounts for a failure to download a .qsf file initially), but it works well enough that I figured it might be useful for someone else. 
 
+There are two versions of the script: `qualtrics_backup.R`, which I would recommend using first, and `qualtrics_backup_compatibiltity_version.R`, which you can use if you are having issues with your versions of packages not lining up with the ones used to write this code. They are identical, except that the compatibilty_version script loads the libraries differently using the [`groundhog`](https://groundhogr.com/) package.
+
 
 ## 1. Get your Datacenter ID and API key for Qualtrics
 Go to user settings:
@@ -50,22 +52,9 @@ The question_data folder has a bunch of essentially data dictionaries -- they ar
 
 
 ## 5. What if you get errors? 
+One thing to check is that you are using a version of the packages consistent with the version that I used to write the script. The output of sessionInfo() for my version of each package is below. If your version of the package does not match, that could be what is causing the error. If you use the version of the R script `qualtrics_backup_compatibility_version.R`, that will use the package [`groundhog`](https://groundhogr.com/) to ensure that your versions of the packages line up with the ones used when writing these scripts.
 
-One thing to check is that you are using a version of the packages consistent with the version that I used to write the script. The output of sessionInfo() for my version of each package is below. If your version of the package does not match, that could be what is causing the error.
 
-One way to avoid this is to use the R package groundhog. If you replace line 10 of the script (`pacman::p_load(...)`), which loads packages, with the following, that should ensure that you are using the right packages. 
-
-### Alternate library loading code to ensure compatibility
-```
-pacman::p_load(groundhog)
-
-# This library ensures that you have the right versions of each package
-# See https://groundhogr.com/ for more details
-required_packages = c("tidyverse", "httr", "jsonlite", "fs", "here", "qualtRics", "rlist")
-groundhog_day = "2024-06-03"
-
-groundhog.library(required_packages, groundhog_day)
-```
 ### sessionInfo() output
 ```
 R version 4.4.0 (2024-04-24 ucrt)
