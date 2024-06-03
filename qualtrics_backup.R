@@ -1,7 +1,17 @@
-pacman::p_load(tidyverse, httr, jsonlite, fs, here, qualtRics)
+#
+# Load packages
+#
 
+if (!require("pacman")) {
+  install.packages("pacman")
+  library(pacman)
+}
 
-#This assumes that your Renviron already has qualtRics stuff set up
+pacman::p_load(tidyverse, httr, jsonlite, fs, here, qualtRics, rlist)
+
+#
+# Functions
+#
 
 # Function to check if a folder exists, and create it if it doesn't
 create_folder_if_not_exists <- function(folder_name) {
@@ -39,21 +49,18 @@ process_survey = function(survey_id){
                          verbose = TRUE, 
                          force_request = TRUE,
                          include_display_order = T)
-  
+  #Save the data for the survey
   s1_mdata = metadata(survey_id)
-  
   s1_qdata = survey_questions(survey_id)
-  
-  metadata_filename = paste0(here("metadata//"), "metadata-", survey_id, '.yaml')
-  
-  
-  qdata_filename = paste0(here("question_data//"), "question_data-", survey_id, '.Rds')
-
   s1_rdata = survey1
+
+  #Set the filenames for the surveys
+  metadata_filename = paste0(here("metadata//"), "metadata-", survey_id, '.yaml')
+  qdata_filename = paste0(here("question_data//"), "question_data-", survey_id, '.Rds')
   responsedata_filename = paste0(here("data//"), "response_data-", survey_id, '.Rds')
-  
+
+  #Save all of the data into the appropriate folders
   list.save(s1_mdata, metadata_filename)
-  
   saveRDS(s1_qdata, qdata_filename)
   saveRDS(s1_rdata, responsedata_filename)
   
@@ -64,10 +71,9 @@ process_survey = function(survey_id){
 #
 
 
-
 # Set up your Qualtrics API credentials
-api_token <- "YOUR API TOKEN HERE" #Put your api token here
-base_url <- "https://yourdatacenter.qualtrics.com" #Put your datacenter here -- e.g. for me it is ca1.qualtrics.com
+api_token <- "[YOUR API TOKEN HERE]" #Put your api token here, replace the bracketed text
+base_url <- "https://[yourdatacenter].qualtrics.com" #Put your datacenter here in the bracketed text -- e.g. for me it is ca1.qualtrics.com
 
 
 
@@ -91,8 +97,6 @@ headers = c(
   "X-API-TOKEN" = api_token,
   "Content-Type" = "application/json"
 )
-
-
 
 # Main script to download all survey qsfs
 surveys = all_surveys()
