@@ -98,6 +98,9 @@ headers = c(
   "Content-Type" = "application/json"
 )
 
+#Helped some people avoid 504 errors
+options(qualtrics_timeout = 1200)
+
 # Main script to download all survey qsfs
 surveys = all_surveys()
 
