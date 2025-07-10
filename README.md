@@ -1,3 +1,5 @@
+# Big Caveat: I've gotten a report of the .qsf files the scripts creates not correctly importing into Qualtrics. I haven't figured out how to replicate the error, so just proceed with caution and double check for yourself! If anyone figures this out please feel free to send a pull request. 
+
 # Qualtrics Backup Script
 A very simple script for backing up all your data and .qsf files from Qualtrics. It will download all of the .qsf files and data for every survey in your account. It should be reasonably easy to use if you can use R. It works for me, but I definitely have not tested it with any other setup than my own. Please be careful whenever you are using an API- this script has no way to do anything but download your own data, but in theory you could mess things up. 
 
