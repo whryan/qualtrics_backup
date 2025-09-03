@@ -1,4 +1,5 @@
-## Big Caveat: I've gotten a report of the .qsf files the scripts creates not correctly importing into Qualtrics. It looks like this has something to do with how the API is providing the .qsf data -- the data from the endpoint is formatted a bit differently than the actual qsfs. So while one could recreate a survey from this, it will not import cleanly. 
+## I would use this fork made by Gilad Feldman instead, where he improves the script and fixes some bugs: https://github.com/giladfeldman/qualtrics_backup/
+
 
 # Qualtrics Backup Script
 A very simple script for backing up all your data and .qsf files from Qualtrics. It will download all of the .qsf files and data for every survey in your account. It should be reasonably easy to use if you can use R. It works for me, but I definitely have not tested it with any other setup than my own. Please be careful whenever you are using an API- this script has no way to do anything but download your own data, but in theory you could mess things up. 
